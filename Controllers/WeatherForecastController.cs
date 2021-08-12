@@ -30,5 +30,17 @@ namespace nerdvision.api.test.Controllers
             })
             .ToArray());
         }
+
+        [HttpPost]
+        public IActionResult Post()
+        {
+            var rng = new Random();
+            return Ok(Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55)
+            })
+            .ToArray());
+        }
     }
 }
